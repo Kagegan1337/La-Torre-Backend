@@ -74,6 +74,47 @@ values (26,2,'Vegetables');
 INSERT INTO translation
 values (27,3,'Verduras');
 
+INSERT INTO translation
+values (28,1,'Karton');
+INSERT INTO translation
+values (29,1,'Packung');
+INSERT INTO translation
+values (30,1,'Schachel');
+
+INSERT INTO translation
+values (31,2,'Karton EN');
+INSERT INTO translation
+values (32,2,'Packung EN');
+INSERT INTO translation
+values (33,2, 'Schachtel EN');
+
+INSERT INTO translation
+values (34,3,'Karton PT');
+INSERT INTO translation
+values (35,3,'Packung PT');
+INSERT INTO translation
+values (36,3,'Schachtel PT');
+
+INSERT INTO pooling_description
+values (1,1,28);
+INSERT INTO pooling_description
+values (2,1,29);
+INSERT INTO pooling_description
+values (3,1,30);
+
+INSERT INTO pooling_description
+values (4,1,31);
+INSERT INTO pooling_description
+values (5,1,32);
+INSERT INTO pooling_description
+values (6,1,33);
+
+INSERT INTO pooling_description
+values (7,1,34);
+INSERT INTO pooling_description
+values (8,1,35);
+INSERT INTO pooling_description
+values (9,1,36);
 
 
 INSERT INTO description values (1,1,1);
@@ -99,3 +140,15 @@ INSERT INTO names values (6,2,9);
 INSERT INTO names values (7,3,10);
 INSERT INTO names values (8,3,11);
 INSERT INTO names values (9,3,12);
+
+INSERT INTO pooling_article values (1,1);
+INSERT INTO pooling_article values (1,2);
+INSERT INTO pooling_article values (1,3);
+
+INSERT INTO pooling_article values (2,1);
+INSERT INTO pooling_article values (2,2);
+INSERT INTO pooling_article values (2,3);
+
+INSERT INTO pooling_article values (3,1);
+INSERT INTO pooling_article values (3,2);
+INSERT INTO pooling_article values (3,3);

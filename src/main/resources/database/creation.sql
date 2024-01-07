@@ -70,3 +70,10 @@ CREATE TABLE IF NOT EXISTS "pooling_article"
 );
 
 
+CREATE TABLE IF NOT EXISTS "pooling_description" (
+    "pooling_description_id" integer,
+    "pooling_id" integer,
+    "translation_id" integer,
+    CONSTRAINT fk_pooling FOREIGN KEY ("pooling_id") REFERENCES "pooling"("pooling_id"),
+    CONSTRAINT fk_translation FOREIGN KEY ("translation_id") REFERENCES "translation"("translation_id")
+)
