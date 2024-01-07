@@ -76,4 +76,18 @@ CREATE TABLE IF NOT EXISTS "pooling_description" (
     "translation_id" integer,
     CONSTRAINT fk_pooling FOREIGN KEY ("pooling_id") REFERENCES "pooling"("pooling_id"),
     CONSTRAINT fk_translation FOREIGN KEY ("translation_id") REFERENCES "translation"("translation_id")
-)
+);
+
+CREATE TABLE IF NOT EXISTS "images" (
+    "image_id" integer,
+    "image_path" varchar(255),
+    PRIMARY KEY ("image_id")
+);
+
+CREATE TABLE IF NOT EXISTS "article_image" (
+    "image_id" integer,
+    "article_id" integer,
+    PRIMARY KEY ("image_id","article_id"),
+    CONSTRAINT fk_image FOREIGN KEY ("image_id") REFERENCES images("image_id"),
+    CONSTRAINT fk_article FOREIGN KEY ("article_id") REFERENCES article("article_id")
+);

@@ -152,3 +152,4 @@ INSERT INTO pooling_article values (2,3);
 INSERT INTO pooling_article values (3,1);
 INSERT INTO pooling_article values (3,2);
 INSERT INTO pooling_article values (3,3);
+
