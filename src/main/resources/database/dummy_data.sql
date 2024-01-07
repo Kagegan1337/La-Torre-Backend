@@ -103,18 +103,18 @@ INSERT INTO pooling_description
 values (3,1,30);
 
 INSERT INTO pooling_description
-values (4,1,31);
+values (4,2,31);
 INSERT INTO pooling_description
-values (5,1,32);
+values (5,2,32);
 INSERT INTO pooling_description
-values (6,1,33);
+values (6,2,33);
 
 INSERT INTO pooling_description
-values (7,1,34);
+values (7,3,34);
 INSERT INTO pooling_description
-values (8,1,35);
+values (8,3,35);
 INSERT INTO pooling_description
-values (9,1,36);
+values (9,3,36);
 
 
 INSERT INTO description values (1,1,1);

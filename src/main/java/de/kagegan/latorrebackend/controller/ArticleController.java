@@ -7,20 +7,28 @@ import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
 @Controller
-@RequestMapping()
+@RequestMapping("article")
 public class ArticleController {
 
     @Autowired
     private ArticleService articleService;
 
-    @GetMapping(value = "article/all", produces = "Application/json")
+    @GetMapping(value = "/all", produces = "Application/json")
     public ResponseEntity<?> getAllArticles() {
         List<ArticleDto> result = articleService.getAllArticles();
         return new ResponseEntity<>(result, HttpStatusCode.valueOf(200));
+    }
+
+    @GetMapping(value = "/{id}")
+    @ResponseBody
+    public ResponseEntity<?> getArticle(@PathVariable Long id) {
+        return new ResponseEntity<>(articleService.findArticleById(id), HttpStatusCode.valueOf(200));
     }
 }

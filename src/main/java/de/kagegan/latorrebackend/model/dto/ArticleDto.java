@@ -1,18 +1,6 @@
 package de.kagegan.latorrebackend.model.dto;
 
-public record ArticleDto(Long articleId, Long pricePerUnit, String manufacturer, Long name, Long description, Long pooling, Long preis) {
+import java.util.List;
 
-
-    @Override
-    public String toString() {
-        return "ArticleDto{" +
-                "articleId=" + articleId +
-                ", pricePerUnit=" + pricePerUnit +
-                ", manufacturer='" + manufacturer + '\'' +
-                ", name=" + name +
-                ", description=" + description +
-                ", pooling=" + pooling +
-                ", preis=" + preis +
-                '}';
-    }
+public record ArticleDto(Long id, String name, String description, List<PoolingDto> pooling, ){
 }
