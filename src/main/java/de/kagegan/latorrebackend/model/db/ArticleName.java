@@ -59,5 +59,23 @@ public class ArticleName {
             this.articleId = articleId;
             this.translationId = translationId;
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            ArticleNameId that = (ArticleNameId) o;
+
+            if (!articleId.equals(that.articleId)) return false;
+            return translationId.equals(that.translationId);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = articleId.hashCode();
+            result = 31 * result + translationId.hashCode();
+            return result;
+        }
     }
 }

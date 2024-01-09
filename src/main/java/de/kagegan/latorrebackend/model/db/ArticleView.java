@@ -40,4 +40,23 @@ public class ArticleView {
         this.manufacturer = manufacturer;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ArticleView that = (ArticleView) o;
+
+        if (!article_id.equals(that.article_id)) return false;
+        if (!price_per_unit.equals(that.price_per_unit)) return false;
+        return manufacturer.equals(that.manufacturer);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = article_id.hashCode();
+        result = 31 * result + price_per_unit.hashCode();
+        result = 31 * result + manufacturer.hashCode();
+        return result;
+    }
 }

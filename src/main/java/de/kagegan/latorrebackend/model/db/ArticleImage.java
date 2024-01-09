@@ -63,5 +63,23 @@ public class ArticleImage {
             this.articleId = articleId;
             this.imageId = imageId;
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+
+            ArticleImageId that = (ArticleImageId) o;
+
+            if (!articleId.equals(that.articleId)) return false;
+            return imageId.equals(that.imageId);
+        }
+
+        @Override
+        public int hashCode() {
+            int result = articleId.hashCode();
+            result = 31 * result + imageId.hashCode();
+            return result;
+        }
     }
 }
