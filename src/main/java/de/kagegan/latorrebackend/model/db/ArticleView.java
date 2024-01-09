@@ -15,13 +15,6 @@ public class ArticleView {
 
     private String manufacturer;
 
-    private Long name;
-
-    private Long description;
-
-    private Long pooling;
-
-    private Long preis;
 
     public Long getArticle_id() {
         return article_id;
@@ -47,35 +40,4 @@ public class ArticleView {
         this.manufacturer = manufacturer;
     }
 
-    public Long getName() {
-        return name;
-    }
-
-    public void setName(Long name) {
-        this.name = name;
-    }
-
-    public Long getDescription() {
-        return description;
-    }
-
-    public void setDescription(Long description) {
-        this.description = description;
-    }
-
-    public Long getPooling() {
-        return pooling;
-    }
-
-    public void setPooling(Long pooling) {
-        this.pooling = pooling;
-    }
-
-    public Long getPreis() {
-        return preis;
-    }
-
-    public void setPreis(Long preis) {
-        this.preis = preis;
-    }
 }

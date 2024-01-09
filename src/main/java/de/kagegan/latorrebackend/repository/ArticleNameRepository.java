@@ -3,5 +3,9 @@ package de.kagegan.latorrebackend.repository;
 import de.kagegan.latorrebackend.model.db.ArticleName;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ArticleNameRepository extends JpaRepository<ArticleName, Long> {
+import java.util.List;
+
+public interface ArticleNameRepository extends JpaRepository<ArticleName, ArticleName.ArticleNameId> {
+
+    public List<ArticleName> findByArticleId(Long articleId);
 }
