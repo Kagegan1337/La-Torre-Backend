@@ -1,17 +1,15 @@
 package de.kagegan.latorrebackend.service;
 
-import de.kagegan.latorrebackend.model.db.ArticleDescription;
-import de.kagegan.latorrebackend.model.db.ArticleName;
 import de.kagegan.latorrebackend.model.db.ArticleView;
 import de.kagegan.latorrebackend.model.dto.ArticleDto;
 import de.kagegan.latorrebackend.model.dto.ArticleImageDto;
 import de.kagegan.latorrebackend.model.dto.PoolingDto;
+import de.kagegan.latorrebackend.model.dto.TranslationDto;
 import de.kagegan.latorrebackend.repository.ArticleDescriptionRepository;
 import de.kagegan.latorrebackend.repository.ArticleImageRepository;
 import de.kagegan.latorrebackend.repository.ArticleNameRepository;
 import de.kagegan.latorrebackend.repository.ArticlePoolingRepository;
 import de.kagegan.latorrebackend.repository.ArticleRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -44,23 +42,23 @@ public class ArticleService {
         List<ArticleView> articles = articleRepository.findAll();
         List<ArticleDto> resultList = new ArrayList<>();
         for (ArticleView article : articles) {
-            List<String> name = articleNameRepository.findByArticleId(article.getArticle_id()).stream()
+            List<TranslationDto> names = articleNameRepository.findByArticleId(article.getArticle_id()).stream()
                     .filter(Objects::nonNull)
-                    .map(ArticleName::getTranslation)
+                    .map(r -> new TranslationDto(r.getTranslation(), r.getIsoCode()))
                     .toList();
-            List<String> descriptions = articleDescriptionRepository.findByArticleId(article.getArticle_id()).stream()
+            List<TranslationDto> descriptions = articleDescriptionRepository.findByArticleId(article.getArticle_id()).stream()
                     .filter(Objects::nonNull)
-                    .map(ArticleDescription::getTranslation)
+                    .map(r -> new TranslationDto(r.getTranslation(), r.getIsoCode()))
                     .toList();
             List<PoolingDto> poolingDtos = articlePoolingRepository.findByArticleId(article.getArticle_id()).stream()
                     .filter(Objects::nonNull)
-                    .map(r -> new PoolingDto(r.getTranslation(), r.getPrice()))
+                    .map(r -> new PoolingDto(new TranslationDto(r.getTranslation(), r.getIsoCode()), r.getPrice()))
                     .toList();
             List<ArticleImageDto> articleImageList = articleImageRepository.findByArticleId(article.getArticle_id()).stream()
                     .filter(Objects::nonNull)
                     .map(r -> new ArticleImageDto(r.getImageName(), r.getImagePath()))
                     .toList();
-            resultList.add(new ArticleDto(article.getArticle_id(), name, article.getManufacturer(),descriptions, poolingDtos, articleImageList));
+            resultList.add(new ArticleDto(article.getArticle_id(), names, article.getManufacturer(), descriptions, poolingDtos, articleImageList));
         }
         return resultList;
     }
