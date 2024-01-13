@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Service
 public class ArticleService {
@@ -50,15 +49,11 @@ public class ArticleService {
                     .filter(Objects::nonNull)
                     .map(r -> new TranslationDto(r.getTranslation(), r.getIsoCode()))
                     .toList();
-            List<PoolingDto> poolingDtos = articlePoolingRepository.findByArticleId(article.getArticle_id()).stream()
-                    .filter(Objects::nonNull)
-                    .map(r -> new PoolingDto(new TranslationDto(r.getTranslation(), r.getIsoCode()), r.getPrice()))
-                    .toList();
             List<ArticleImageDto> articleImageList = articleImageRepository.findByArticleId(article.getArticle_id()).stream()
                     .filter(Objects::nonNull)
                     .map(r -> new ArticleImageDto(r.getImageName(), r.getImagePath()))
                     .toList();
-            resultList.add(new ArticleDto(article.getArticle_id(), names, article.getManufacturer(), descriptions, poolingDtos, articleImageList));
+            resultList.add(new ArticleDto(article.getArticle_id(), names, article.getManufacturer(), descriptions, articleImageList));
         }
         return resultList;
     }

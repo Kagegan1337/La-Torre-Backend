@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +30,6 @@ public class ArticleController {
     @GetMapping(value = "/{id}")
     @ResponseBody
     public ResponseEntity<?> getArticle(@PathVariable Long id) {
-        return new ResponseEntity<>(articleService.findArticleById(id), HttpStatusCode.valueOf(200));
+        return ResponseEntity.ok(articleService.findArticleById(id));
     }
 }
