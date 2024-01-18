@@ -1,62 +1,69 @@
 package de.kagegan.latorrebackend.model.db;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import org.hibernate.annotations.Immutable;
 
-@Entity(name = "V_Article")
+@Entity(name = "article_view")
 @Immutable
 public class ArticleView {
 
     @Id
-    private Long article_id;
+    private Long id;
 
-    private Long price_per_unit;
+    private String name;
 
-    private String manufacturer;
+    private String beschreibung;
 
+    private String kategorie;
 
-    public Long getArticle_id() {
-        return article_id;
+    @Column(name = "sub_kategorie")
+    private String subCategory;
+
+    private String thumbnail;
+
+    public Long getId() {
+        return id;
     }
 
-    public void setArticle_id(Long article_id) {
-        this.article_id = article_id;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public Long getPrice_per_unit() {
-        return price_per_unit;
+    public String getName() {
+        return name;
     }
 
-    public void setPrice_per_unit(Long price_per_unit) {
-        this.price_per_unit = price_per_unit;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
+    public String getBeschreibung() {
+        return beschreibung;
     }
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    public void setBeschreibung(String beschreibung) {
+        this.beschreibung = beschreibung;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        ArticleView that = (ArticleView) o;
-
-        if (!article_id.equals(that.article_id)) return false;
-        if (!price_per_unit.equals(that.price_per_unit)) return false;
-        return manufacturer.equals(that.manufacturer);
+    public String getKategorie() {
+        return kategorie;
     }
 
-    @Override
-    public int hashCode() {
-        int result = article_id.hashCode();
-        result = 31 * result + price_per_unit.hashCode();
-        result = 31 * result + manufacturer.hashCode();
-        return result;
+    public void setKategorie(String kategorie) {
+        this.kategorie = kategorie;
+    }
+
+    public String getSubCategory() {
+        return subCategory;
+    }
+
+    public void setSubCategory(String subCategory) {
+        this.subCategory = subCategory;
+    }
+
+    public String getThumbnail() {
+        return thumbnail;
     }
 }
